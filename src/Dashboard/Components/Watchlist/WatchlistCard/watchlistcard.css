@@ -1,0 +1,70 @@
+.watchlist-card {
+  display: flex;
+  height: 5rem;
+  width: 25vw;
+  background-color: black;
+  /* justify-content: space-around; */
+  /* align-items: center; */
+  padding: 0.5rem 1rem;
+  position: relative;
+  flex-direction: column;
+}
+.watchlist-card:hover {
+  color: black;
+  background-color: white;
+}
+.watchlist-card-content{
+  width: 100%;
+  display: flex;
+  position: relative;
+  top: 0rem;
+  justify-content: flex-end;
+}
+.watchlist-card-content > div {
+  padding: 0 0.5rem;
+  font-size: 1rem;
+}
+.watchlist-card-company-name {
+  display: flex;
+  flex-grow: 1;
+}
+.watchlist-card-buttons {
+  justify-content: flex-start;
+  display: flex;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+.watchlist-card-button {
+  color: white;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 2rem;
+  margin: 0 0.5rem;
+}
+.buy {
+  background-color: #328135; /* Green */
+  border: 1px solid #328135;
+}
+.buy:hover {
+  background-color: white;
+  color: #328135;
+}
+.sell {
+  background-color: #bc1818; /* Green */
+  border: 1px solid #bc1818;
+}
+.sell:hover {
+  background-color: white;
+  color: #bc1818;
+}
+.graph {
+  background-color: grey;
+  border: 1px solid grey;
+}
+.graph:hover {
+  background-color: white;
+  color: grey;
+}

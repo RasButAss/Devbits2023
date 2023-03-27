@@ -1,0 +1,19 @@
+.features-main-div {
+  height: 100vh;
+  background-color: black;
+  position: relative;
+  color:white;
+}
+
+.features-heading {
+  margin: 0;
+  padding: 1rem 5rem;
+  font-size: 5rem;
+}
+
+.features-featurecard-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0rem 5rem;
+  justify-content: space-around;
+}

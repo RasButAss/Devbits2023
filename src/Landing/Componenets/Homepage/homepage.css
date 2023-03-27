@@ -1,0 +1,18 @@
+.homepage-main-div {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  display:flex;
+  flex-direction: row;
+}
+.homepage-img {
+  height: 100vh;
+  width: 55rem;
+}
+.homepage-title {
+  color: white;
+  justify-content: center;
+  align-items : center;
+  display: flex;
+  flex-direction: column;
+}

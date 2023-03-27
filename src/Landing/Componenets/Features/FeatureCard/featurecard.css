@@ -1,0 +1,26 @@
+.featurecard-main-div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  background-color: black;
+  width: 25rem;
+  align-items: center;
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  color: white;
+}
+/* .featurecard-main-div:hover {
+  background-color: grey;
+} */
+.featurecard-image {
+  height: 20rem;
+  width: 100%;
+}
+/* .featurecard-image-div {
+  background-color: black;
+} */
+.featurecard-content {
+  text-align: center;
+}
+.featurecard-content > h1 {
+  text-align: center;
+}
