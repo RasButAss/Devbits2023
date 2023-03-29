@@ -1,0 +1,21 @@
+.news-main-div {
+  width: 100vw;
+  background-color: black;
+  color: white;
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
+}
+.news-content-container {
+    padding-top: 3rem;
+  padding-bottom: 0rem;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  display: flex;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 6vw;
+}

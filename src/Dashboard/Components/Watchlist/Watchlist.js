@@ -1,28 +1,21 @@
-import React from 'react'
+import React, { useState , useEffect } from 'react'
 import './watchlist.css'
 import WatchlistCard from './WatchlistCard/WatchlistCard'
+import Search from '../Search/Search'
 
-const Watchlist = () => {
+export default function Watchlist() {
+  const [watchlistData, setWatchlistData] = useState([])
+  
+  useEffect(() => {
+    console.log(watchlistData);
+  }, [watchlistData])
   return (
     <div className='watchlist-main-div'>
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
-      <WatchlistCard />
+      <Search setWatchlistData={setWatchlistData} />
+      {watchlistData.map((element) => {
+        return (<><WatchlistCard element={element} /></>)
+      })}
     </div>
   )
 }
 
-export default Watchlist

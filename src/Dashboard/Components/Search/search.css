@@ -1,0 +1,20 @@
+.watchlist-search {
+  width: 100%;
+  background-color: black;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  padding: 0.5rem 0.3rem;
+  display: flex;
+}
+.search-dropdown-div {
+  cursor: pointer;
+}
+.search-dropdown-row {
+  display: flex;
+  font-size: 0.8rem;
+}
+.search-dropdown-row:hover {
+  color: black;
+  background-color: white;
+}

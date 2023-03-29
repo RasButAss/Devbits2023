@@ -1,0 +1,13 @@
+.details-main-div {
+  background-color: black;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  color: white
+}
+.company-details-content {
+  padding: 3rem 6vw;
+}
+.company-quick-stats {
+  
+}

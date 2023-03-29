@@ -1,0 +1,29 @@
+.newscard-main-div {
+  background-color: white;
+  height: 32em;
+  width: 25em;
+  margin: 1rem;
+  display: flex;
+  color:black;
+  flex-direction: column;
+}
+.newscard-heading > h3 {
+  font-size: 1.3rem;
+  margin: 0;
+  padding: 0 0.8rem;
+}
+.newscard-heading {
+  display: flex;
+}
+.newscard-content {
+  display: flex;
+}
+.newscard-content > p {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0 0.8rem;
+}
+.newscard-image {
+  display: flex;
+  height: 50%;
+}

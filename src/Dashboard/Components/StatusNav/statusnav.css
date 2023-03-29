@@ -1,0 +1,29 @@
+.statusnav-main-div {
+  display:flex;
+  flex-direction: row;
+  height: 2.5rem;
+}
+.statusnav-links {
+  display: flex;
+}
+.statusnav-links > button {
+  padding: 0rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+.statusnav-links > button:hover{
+  background-color: white;
+  color: black;
+}
+.statusnav-pnl-data {
+  display: flex;
+  align-items: center;
+}
+.statusnav-pnl-data > p {
+  padding: 0rem 1rem;
+  font-size: 0.8rem;
+}

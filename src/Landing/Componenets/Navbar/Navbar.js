@@ -23,7 +23,7 @@ const Navbar = () => {
           <div class="nav-links">
             <Link to={'/dashboard'}>Dashboard</Link>
             <a href="">Product</a>
-            <a href="">News</a>
+            <Link to={'/news'}>News</Link>
             <a href="">Support</a>
             <a href="">Signup</a> 
           </div>
