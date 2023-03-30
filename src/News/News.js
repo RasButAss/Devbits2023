@@ -22,11 +22,11 @@ const News = () => {
         </div>
       </div>
       <div className='card-container'>
-          {newsData.map((element) => {
-            return <NewsCard imgurl={element['banner_image']} heading={element['title']} summary={element['summary']} redirect={element['url']} />
+          {newsData.map((element, index) => {
+            return <NewsCard key={index} imgurl={element['banner_image']} heading={element['title']} summary={element['summary']} redirect={element['url']} />
           })
           }
-        </div>
+      </div>
     </div>
   )
 }

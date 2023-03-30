@@ -20,7 +20,7 @@ const WatchlistCard = ({element}) => {
       <div className='watchlist-card-buttons'>
         <button onClick={() => {setTrigger(true)}} className='watchlist-card-button buy'>BUY</button>
         <button onClick={() => {setTrigger(true)}} className='watchlist-card-button sell'>SELL</button>
-        <Link to={'/details/' + CompanyData['1. symbol']} className='watchlist-card-button graph'>DETAILS</Link>
+        <Link to={`/details/${CompanyData['1. symbol']}`} className='watchlist-card-button graph'>DETAILS</Link>
       </div>
       <Form trigger={trigger} setTrigger={setTrigger} data={element} />
     </div>
