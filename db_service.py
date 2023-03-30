@@ -1,3 +1,4 @@
+
 import mysql.connector
 
 def get_db_connection():
@@ -119,7 +120,7 @@ def get_user_info(user_id):
         }
     }
 
-def get_user_trade(user_id):
+def get_user_buys(user_id):
     db_connection = get_db_connection()
     cur = db_connection.cursor()
     query="Select stock_id from buys WHERE user_id=%s"
@@ -138,5 +139,29 @@ def get_user_trade(user_id):
             }
         
         result.append(entry)
+        
+    
+    return result
+
+def get_user_sale(user_id):
+    db_connection = get_db_connection()
+    cur = db_connection.cursor()
+    query="Select stock_id from sell WHERE user_id=%s"
+    cur.execute(query,(user_id,))
+    rows=cur.fetchall()
+    print (rows)
+    
+    
+    result = []
+    for row in rows:
+        
+        entry = {
+            'stock_id': row[0],
+            
+
+            }
+        
+        result.append(entry)
+        
     
     return result
