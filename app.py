@@ -94,12 +94,19 @@ def get_user_trade():
     
     result = db_service.get_user_info(user_id)
     return jsonify(result)
-@app.route('/get_user_trade',methods={'GET'})
-def get_user_info():
+@app.route('/get_user_buys',methods={'GET'})
+def get_user_buys():
     
     user_id = session['user_id']
     
-    result = db_service.get_user_trade(user_id)
+    result = db_service.get_user_buys(user_id)
+    return jsonify(result)
+@app.route('/get_user_sale',methods={'GET'})
+def get_user_sale():
+    
+    user_id = session['user_id']
+    
+    result = db_service.get_user_sale(user_id)
     return jsonify(result)
 
 @app.route("/logout")
