@@ -1,4 +1,3 @@
-
 import mysql.connector
 
 def get_db_connection():
@@ -22,6 +21,14 @@ def sign_up_user(user_name,password,email_id):
         return {'status': False, 'error': "Failed to insert"}
     result="sign up done"
     return result
+def login(user_name,password):
+    db_connection = get_db_connection()
+    cur = db_connection.cursor()
+    query = "SELECT user_id FROM user WHERE user_name=%s and password=%s"
+    cur.execute(query,(user_name, password))
+    row = cur.fetchall()
+
+    return row
 
 def add_to_watchlist(user_id,stock_id):
      db_connection = get_db_connection()
@@ -111,4 +118,25 @@ def get_user_info(user_id):
             
         }
     }
-get_user_info(1)
+
+def get_user_trade(user_id):
+    db_connection = get_db_connection()
+    cur = db_connection.cursor()
+    query="Select stock_id from buys WHERE user_id=%s"
+    cur.execute(query,(user_id,))
+    rows=cur.fetchall()
+    print (rows)
+    
+    
+    result = []
+    for row in rows:
+        
+        entry = {
+            'stock_id': row[0],
+            
+
+            }
+        
+        result.append(entry)
+    
+    return result
