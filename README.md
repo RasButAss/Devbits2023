@@ -3,6 +3,12 @@
 Our platform also provides users with news and analysis, enabling them to stay up-to-date with the latest market trends and insights. 
 For out future update we plan to add consumer support. With this, users can access reliable customer support, ensuring that their concerns are addressed and resolved quickly. Our website is the perfect platform for investors, from beginners to experienced professionals, to take advantage of the stock market and maximize their returns.
 
+## Description of files
+<ol>
+<li> <b>db_service.py</b> - connects mySQL database to the web application.</li>
+<li> <b>flask_app.py</b> - flask code of the database. </li>
+<li> <b>package.json</b> - contains all dependencies. </li>
+<li> <b>package-lock.json</b> - contains the version details of dependencies. </li>
 
 
 ### Tech-Stack:BACKEND
