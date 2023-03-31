@@ -9,7 +9,9 @@ const Navbar = () => {
         <input type="checkbox" id="nav-check" />
           <div class="nav-header">
             <div class="nav-title">
+              <a href='/'>
               WELDRIGHT
+              </a>
             </div>
           </div>
           <div class="nav-btn">
@@ -24,7 +26,7 @@ const Navbar = () => {
             <Link to={'/dashboard'}>Dashboard</Link>
             <a href="">Product</a>
             <Link to={'/news'}>News</Link>
-            <a href="">Signup</a> 
+            <Link to={'/signup'}>Signup</Link> 
           </div>
       </div>
     </div>

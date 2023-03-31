@@ -112,3 +112,24 @@ body {
     overflow-y: auto;
   }
 }
+.nav-title > a {
+  color: white;
+}
+.nav-title > a:link {
+  color: white;
+}
+
+/* visited link */
+.nav-title > a:visited {
+  color: white;
+}
+
+/* mouse over link */
+.nav-title > a:hover {
+  color: white;
+}
+
+/* selected link */
+.nav-title > a:active {
+  color: white;
+}

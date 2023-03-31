@@ -28,7 +28,7 @@ const SignIn = () => {
           <label className='username-lable' for="password">Password</label>
           <input className='username-input' type="password" placeholder="Password" id="password" value={password} onChange={(e) => {setpassword(e.target.value)}} />
 
-          <button className='submit-btn-login' type='submit'>Log In</button>
+          <Link to='/dashboard'><button className='submit-btn-login' type='submit'>Log In</button></Link>
           <p>New to Weldright ? <Link to='/signup'>Sign Up</Link></p>
         </form>
       </div>
