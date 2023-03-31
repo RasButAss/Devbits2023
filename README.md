@@ -6,7 +6,7 @@ For out future update we plan to add consumer support. With this, users can acce
 
 
 ### Tech-Stack:
-1. Javascript
+1. react
 2. Flask APIs
 3. MySQL Database
 
