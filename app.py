@@ -109,6 +109,14 @@ def get_user_sale():
     result = db_service.get_user_sale(user_id)
     return jsonify(result)
 
+@app.route('/get_user_watchlist',methods={'GET'})
+def get_user_watchlist():
+    
+    user_id = session['user_id']
+    
+    result = db_service.get_user_watchlist(user_id)
+    return jsonify(result)
+
 @app.route("/logout")
 def logout():
     session.clear()
