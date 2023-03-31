@@ -5,18 +5,29 @@ For out future update we plan to add consumer support. With this, users can acce
 
 
 
-### Tech-Stack:
+### Tech-Stack:BACKEND
 1. react
 2. Flask APIs
 3. MySQL Database
 
-### DATABASE-ER DIAGRAM
+## BACKEND
 
-![c66c0eec-49e6-4467-a3af-e93edc91ad50](https://user-images.githubusercontent.com/98745676/229124735-aa6c6b91-5ff7-4575-866d-50adf82b0bb1.jpg)
+1.@app.route('/sign_up_user',methods={'POST'}) -->REGISTER A NEW USER
+2.@app.route('/login',methods={'POST'})   --> LOGIN AN OLD USER
+3.@app.route('/add_to_watchlist',methods={'POST'})  --> ADD A COMPANY PROFILE TO USER'S WATCHLIST
+4.@app.route('/buy',methods={'POST'})  -->BUY A COMPANY'S STOCK
+5.@app.route('/sell',methods={'POST'})  -->SELL A COMPANY'S STOCK
+6.@app.route('/get_user_info',methods={'GET'}) --> GET CURRENT HOLDINGS AND BALANCE OF A USER
+7.@app.route('/get_user_buys',methods={'GET'}) --> GET HISTORY OF ALL THE STOCKS EVER BOUGHT
+8.@app.route('/get_user_sale',methods={'GET'})  --> GET HISTORY OF ALL THE STOCKS EVER SOLD
+9.@app.route('/get_user_watchlist',methods={'GET'}) --> GET ALL THE PROFILES IN USER'S WATCHLIST
 
+## DEPLOYMENT OF BACKEND
+http://prachi003.pythonanywhere.com/
 
+##FRONTEND
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+ 
 
 ### Available Scripts
 
