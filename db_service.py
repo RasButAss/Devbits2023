@@ -5,7 +5,7 @@ def get_db_connection():
   mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="AMMAappa01@",
+  password="10082003",
   database="devbits"
   )
   return mydb
@@ -147,6 +147,29 @@ def get_user_sale(user_id):
     db_connection = get_db_connection()
     cur = db_connection.cursor()
     query="Select stock_id from sell WHERE user_id=%s"
+    cur.execute(query,(user_id,))
+    rows=cur.fetchall()
+    print (rows)
+    
+    
+    result = []
+    for row in rows:
+        
+        entry = {
+            'stock_id': row[0],
+            
+
+            }
+        
+        result.append(entry)
+        
+    
+    return result
+
+def get_user_watchlist(user_id):
+    db_connection = get_db_connection()
+    cur = db_connection.cursor()
+    query="Select stock_id from watchlist WHERE user_id=%s"
     cur.execute(query,(user_id,))
     rows=cur.fetchall()
     print (rows)
