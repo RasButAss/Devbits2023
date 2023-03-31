@@ -43,9 +43,9 @@ def login():
         result="wrong credentials"
         return jsonify(result)
     else:
-        
-        
-        return jsonify(length)
+
+        result=db_service.login(user_name,password)
+        return jsonify(result)
 
 
 @app.route('/add_to_watchlist',methods={'POST'})
