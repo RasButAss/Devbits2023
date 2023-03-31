@@ -1,5 +1,11 @@
 # Getting Started with Create React App
 
+### Tech-Stack:
+1. Javascript
+2. Flask APIs
+3. MySQL Database
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
