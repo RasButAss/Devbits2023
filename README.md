@@ -1,15 +1,43 @@
-# Getting Started with Create React App
+# Weldright
+<p>WeldRight is a comprehensive stock buying and selling website that provides its users with the essential features required to make informed decisions in the stock market. Our platform includes a user-friendly interface, allowing users to easily navigate through the various features of the website. With WeldRight, users can manage their portfolios, view real-time stock quotes, and access a wealth of trading tools and research to help them make informed decisions. </p>
+Our platform also provides users with news and analysis, enabling them to stay up-to-date with the latest market trends and insights. 
+For out future update we plan to add consumer support. With this, users can access reliable customer support, ensuring that their concerns are addressed and resolved quickly. Our website is the perfect platform for investors, from beginners to experienced professionals, to take advantage of the stock market and maximize their returns.
 
-### Tech-Stack:
-1. Javascript
+## Description of files
+<ol>
+<li> <b>db_service.py</b> - connects mySQL database to the web application.</li>
+<li> <b>flask_app.py</b> - flask code of the database. </li>
+<li> <b>package.json</b> - contains all dependencies. </li>
+<li> <b>package-lock.json</b> - contains the version details of dependencies. </li>
+
+
+### Tech-Stack:BACKEND
+1. react
 2. Flask APIs
 3. MySQL Database
 
-### DATABASE-ER DIAGRAM
+## BACKEND
+<ol>
+ <li>@app.route('/sign_up_user',methods={'POST'}) -->REGISTER A NEW USER</li>
+ <li>@app.route('/login',methods={'POST'})   --> LOGIN AN OLD USER</li>
+<li>@app.route('/add_to_watchlist',methods={'POST'})  --> ADD A COMPANY PROFILE TO USER'S WATCHLIST</li>
+<li>@app.route('/buy',methods={'POST'})  -->BUY A COMPANY'S STOCK</li>
+<li>@app.route('/sell',methods={'POST'})  -->SELL A COMPANY'S STOCK</li>
+<li>@app.route('/get_user_info',methods={'GET'}) --> GET CURRENT HOLDINGS AND BALANCE OF A USER</li>
+<li>@app.route('/get_user_buys',methods={'GET'}) --> GET HISTORY OF ALL THE STOCKS EVER BOUGHT</li>
+<li>@app.route('/get_user_sale',methods={'GET'})  --> GET HISTORY OF ALL THE STOCKS EVER SOLD</li>
+<li>@app.route('/get_user_watchlist',methods={'GET'}) --> GET ALL THE PROFILES IN USER'S WATCHLIST</li>
+</ol>
 
+
+## DEPLOYMENT OF BACKEND
+http://prachi003.pythonanywhere.com/
+
+## FRONTEND
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ 
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
@@ -22,6 +50,8 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 ### `npm test`
+
+
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
