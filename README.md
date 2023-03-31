@@ -25,7 +25,7 @@ For out future update we plan to add consumer support. With this, users can acce
 ## DEPLOYMENT OF BACKEND
 http://prachi003.pythonanywhere.com/
 
-##FRONTEND
+## FRONTEND
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
  
 
