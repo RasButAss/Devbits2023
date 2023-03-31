@@ -1,11 +1,14 @@
 .newscard-main-div {
   background-color: white;
-  height: 32em;
+  height: 15em;
   width: 25em;
   margin: 1rem;
   display: flex;
   color:black;
   flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  border-radius: 10px;
 }
 .newscard-heading > h3 {
   font-size: 1.3rem;
@@ -25,5 +28,16 @@
 }
 .newscard-image {
   display: flex;
-  height: 50%;
+  height: 100%;
+  opacity: 60%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.newscard-text {
+  position: absolute;
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  height: 14em;
+  overflow: hidden;
 }

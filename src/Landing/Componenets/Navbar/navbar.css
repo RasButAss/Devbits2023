@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   /* remove after adding fonts to all texts */
 }
 
@@ -16,6 +18,10 @@ body {
   z-index: 1;
   top: 0;
   padding: 0 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.2);;
 }
 
 .nav > .nav-header {
@@ -41,10 +47,11 @@ body {
 
 .nav > .nav-links > a {
   display: inline-block;
-  padding: 16px 10px 16px 10px;
+  padding: 6px 10px 6px 10px;
   text-decoration: none;
   color: white;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 10px;
 }
 
 .nav > .nav-links > a:hover {

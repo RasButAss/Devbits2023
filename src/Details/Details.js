@@ -11,35 +11,12 @@ const Details = () => {
   const { id } = useParams()
   const [companyOverview, setCompanyOverview] = useState({})
   const [companyNews, setCompanyNews] = useState([])
-  const [companyTimeSeries, setCompanyTimeSeries] = useState([])
   const didFetch = useRef(true)
   useEffect(() => {
     async function getCompanyNews(id) {
       const data = await fetch(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${id}&sort=LATEST&apikey=8MLLEHJ2IYQ8P50O`)
       const results = await data.json();
       setCompanyNews('feed' in results ? results['feed'] : []);
-    }
-    async function getCompanyTimeSeries(id) {
-      const data = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${id}&outputsize=full&apikey=8MLLEHJ2IYQ8P50O`)
-      const results = await data.json();
-      const newarr = []
-      if ('Time Series (Daily)' in results) {
-        for (const key in results['Time Series (Daily)']) {
-          const timeSeries = results['Time Series (Daily)']
-          const each = timeSeries[key]
-          const newarrele = {
-            date: new Date(key),
-            open: +each['1. open'],
-            high: +each['2. high'],
-            low: +each['3. low'],
-            close: +each['4. close'],
-            volume: +each['6. volume'],
-            adj_close: +each['5. adjusted close']
-          }
-          newarr.push(newarrele)
-        }
-        setCompanyTimeSeries(newarr)
-      }
     }
     async function getCompanyOverview(id) {
       const data = await fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${id}&apikey=8MLLEHJ2IYQ8P50O`)
@@ -48,7 +25,6 @@ const Details = () => {
     }
     if (didFetch.current) {
       getCompanyOverview(id)
-      getCompanyTimeSeries(id)
       getCompanyNews(id)
       didFetch.current = false;
     }
@@ -83,11 +59,16 @@ const Details = () => {
           <div>Dividend Per share : {companyOverview['DividendPerShare']}</div>
           <div>Return on Assets : {companyOverview['ReturnOnAssetsTTM']}</div>
         </div>
-        <TradingViewWidget
-          symbol={id}
-          theme={Themes.DARK}
-        />
-        <div className='card-container'>
+        <div className='details-graph'>
+          <TradingViewWidget
+            symbol={id}
+            theme={Themes.DARK}
+            autosize={false}
+            height={window.innerHeight}
+            width={window.innerWidth-200}
+          />
+        </div>
+        <div className='card-container-details'>
           {companyNews.slice(0, 6).map((element, index) => {
             return <NewsCard key={index} imgurl={element['banner_image']} heading={element['title']} summary={element['summary']} redirect={element['url']} />
           })

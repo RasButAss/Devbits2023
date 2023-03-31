@@ -18,7 +18,7 @@ const News = () => {
       <Navbar />
       <div className='news-content-container'>
         <div className='news-main-heading'>
-          <h1>Latest Financial News</h1>
+          <h1>Finshorts</h1>
         </div>
       </div>
       <div className='card-container'>

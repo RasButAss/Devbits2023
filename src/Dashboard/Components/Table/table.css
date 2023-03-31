@@ -1,18 +1,45 @@
 .dashboard-table-wrapper {
   display: grid;
-  grid-template-columns: repeat(12, auto);
-  font-size: 0.75rem;
+  grid-template-columns: repeat(11, auto);
+  font-size: 0.9rem;
   text-align: center;
+  font-weight: 800;
+  margin: 0 1rem;
 }
 .dashboard-table-wrapper > div {
-  padding: 0.3rem 0;
-  border-right: 1px solid grey;
-  background-color: grey;
+  padding: 0.6rem 0;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.2);
+  /* border-bottom: 1px solid grey; */
+  /* border-top: 1px solid grey; */
+}
+.dashboard-table-wrapper > div:first-child {
+  border-radius: 10px 0 0 0;
+}
+.exit-table-header {
+  border-right: none;
+  border-radius: 0 10px 0 0;
 }
 .dashboard-table-row {
   display:contents;
+  font-weight: 400;
+  font-size: 0.8rem;
 }
 .dashboard-table-row > div {
-  padding: 0.3rem 0;
-  border-bottom: 1px solid grey;
+  padding: 0.7rem 0;
+  border-right: 1px solid rgba(255,255,255,0.2);
 }
+.dashboard-table-wrapper:last-child {
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0 0 10px 10px;
+}
+.dashboard-table-row > div:first-child {
+  border-left: 1px solid rgba(255,255,255,0.2);
+}
+.dashboard-table-wrapper:last-child > div:last-child > div:first-child {
+  border-radius: 0 0 0 10px;
+}
+.dashboard-table-wrapper:last-child > div:last-child > div:last-child {
+  border-radius: 0 0 10px 0;
+}
+

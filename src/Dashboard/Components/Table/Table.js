@@ -14,24 +14,35 @@ const Table = () => {
         <div>Target</div>
         <div>StopLoss</div>
         <div>LTP</div>
-        <div>Fee/Taxes</div>
         <div>Profit/Loss</div>
-        <div>Exit</div>
+        <div className="exit-table-header">Exit</div>
 
         {/*Add row divs*/}
         <div class='dashboard-table-row'>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+        </div>
+        <div class='dashboard-table-row'>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
         </div>
       </div>
     </div>

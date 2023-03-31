@@ -2,18 +2,22 @@
   display:flex;
   flex-direction: row;
   height: 2.5rem;
+  justify-content: space-between;
+  margin: 10px 7px;
 }
 .statusnav-links {
   display: flex;
 }
 .statusnav-links > button {
-  padding: 0rem 1rem;
+  padding: 0rem 0.5rem;
   text-align: center;
   text-decoration: none;
   background-color: black;
   color: white;
   cursor: pointer;
   border: none;
+  border-radius: 10px 10px;
+  margin: 0.3em 0.20em;
 }
 .statusnav-links > button:hover{
   background-color: white;

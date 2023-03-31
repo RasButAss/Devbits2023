@@ -8,3 +8,14 @@
 .company-details-content {
   padding: 3rem 6vw;
 }
+.card-container-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+.company-details-heading > h1 {
+  font-size: 5rem;
+}
+.details-graph {
+  display: flex;
+  padding: 0;
+}

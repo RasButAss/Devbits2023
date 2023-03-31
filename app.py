@@ -3,6 +3,15 @@ import db_service
 
 app = Flask(__name__)
 
+@app.route('/profile')
+def my_profile():
+    response_body = {
+        "name": "Nagato",
+        "about" :"Hello! I'm a full stack developer that loves python and javascript"
+    }
+
+    return response_body
+
 @app.route('/sign_up_user',methods={'POST'})
 def sign_up_user():
 
