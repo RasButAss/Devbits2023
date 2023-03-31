@@ -3,15 +3,7 @@ import db_service
 
 app = Flask(__name__)
 
-@app.route('/profile')
-def my_profile():
-    response_body = {
-        "name": "Nagato",
-        "about" :"Hello! I'm a full stack developer that loves python and javascript"
-    }
-
-    return response_body
-
+app.secret_key = 'prachi2003'
 @app.route('/sign_up_user',methods={'POST'})
 def sign_up_user():
 
@@ -28,12 +20,35 @@ def sign_up_user():
     result =db_service.sign_up_user(user_name,password,email_id)
     return jsonify(result)
 
+@app.route('/login',methods={'POST'})
+def login():
+
+    """
+    login
+    """
+    data = request.get_json()
+    user_name = data['user_name']
+    password = data['password']
+    
+    
+    
+    length =db_service.login(user_name,password)
+    if(len(length)==0):
+        result="wrong credentials"
+        return jsonify(result)
+    else:
+        session['loggedin']='true'
+        session['user_id']=length[0][0]
+        result="logged in"
+        return jsonify(result)
+    
+
 @app.route('/add_to_watchlist',methods={'POST'})
 def add_watchlist():
 
     
     data = request.get_json()
-    user_id = data['user_id']
+    user_id = session['user_id']
     
     
     stock_id = data['stock_id']
@@ -46,7 +61,7 @@ def buy():
 
     
     data = request.get_json()
-    user_id = data['user_id']
+    user_id = session['user_id']
     
     
     stock_id = data['stock_id']
@@ -61,7 +76,7 @@ def sell():
 
     
     data = request.get_json()
-    user_id = data['user_id']
+    user_id = session['user_id']
     
     
     stock_id = data['stock_id']
@@ -73,11 +88,30 @@ def sell():
 
 
 @app.route('/get_user_info',methods={'GET'})
-def get_user_info():
+def get_user_trade():
     
-    user_id = request.args.get('user_id')
-  
+    user_id = session['user_id']
+    
     result = db_service.get_user_info(user_id)
     return jsonify(result)
+@app.route('/get_user_buys',methods={'GET'})
+def get_user_buys():
+    
+    user_id = session['user_id']
+    
+    result = db_service.get_user_buys(user_id)
+    return jsonify(result)
+@app.route('/get_user_sale',methods={'GET'})
+def get_user_sale():
+    
+    user_id = session['user_id']
+    
+    result = db_service.get_user_sale(user_id)
+    return jsonify(result)
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/login")
 if __name__=='__main__':
     app.run(debug=True)
