@@ -5,6 +5,7 @@
 2. Flask APIs
 3. MySQL Database
 
+### DATABASE-ER DIAGRAM
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
