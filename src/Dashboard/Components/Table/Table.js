@@ -1,8 +1,32 @@
 import React, {useState, useEffect} from 'react'
 import './table.css'
 
-const Table = ({page, data}) => {
+const Table = ({page}) => {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    if(page === 'active') {
+      fetch('https://prachi003.pythonanywhere.com/get_user_buys?' + new URLSearchParams({
+        user_id: Number(sessionStorage.getItem("user_id"))
+      })).then(res => res.json()).then(res => setData(res))
+    } else if (page === 'pending') {
+      fetch('https://prachi003.pythonanywhere.com/get_user_sale?' + new URLSearchParams({
+        user_id: Number(sessionStorage.getItem("user_id"))
+      })).then(res => res.json()).then(res => setData(res))
+    } else if (page === 'history') {
+      fetch('https://prachi003.pythonanywhere.com/get_user_sale?' + new URLSearchParams({
+        user_id: sessionStorage.getItem("user_id")
+      })).then(res => res.json()).then(res => setData(res))
+      fetch('https://prachi003.pythonanywhere.com/get_user_buys?' + new URLSearchParams({
+        user_id: sessionStorage.getItem("user_id")
+      })).then(res => res.json()).then(res => setData((prevData) => {return [...prevData,res]}))
+    }
+  },[])
   
+  useEffect(() => {
+    data.map((e) => {
+      console.log(e.entry_price);
+    })
+  },[data])
   return (
     <div>
       <div class="dashboard-table-wrapper">
@@ -11,35 +35,22 @@ const Table = ({page, data}) => {
         <div>Order Type</div>
         <div>Quantity</div>
         <div>Entry Price</div>
-        <div>Investment</div>
-        <div>LTP</div>
-        <div>Profit/Loss</div>
-        <div className="exit-table-header">Exit</div>
+        <div className='exit-table-header'>Investment</div>
 
         {/*Add row divs*/}
-        <div class='dashboard-table-row'>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
+        {data.map((e) => {
+          return (
+          <div class='dashboard-table-row'>
+            <div>{e['time']}</div>
+            <div>{e['stock_id']}</div>
+            <div>{page}</div>
+            <div>{e.quantity}</div>
+            <div>{e.entry_price}</div>
+            <div>{e.entry_price * e.quantity}</div>
+          </div>
+          )
+        })}
         </div>
-        <div class='dashboard-table-row'>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-        </div>
-      </div>
     </div>
   )
 }

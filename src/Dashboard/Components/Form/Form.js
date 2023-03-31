@@ -3,32 +3,41 @@ import './formpopup.css'
 import close from './close.png'
 
 const Form = ({trigger, setTrigger, data}) => {
-  const CompanyData = data["Company Data"];
-  const CompanyName = CompanyData['2. name'];
+  // const CompanyData = data["Company Data"];
+  // const CompanyName = CompanyData['2. name'];
   const QuoteData = data['Global Quote'];
   const ChangePercentage = QuoteData['10. change percent'];
   const Price = QuoteData['05. price'];
-  const Currency = CompanyData['8. currency'];
+  const CompanySymbol = QuoteData['01. symbol']
+  // const Currency = CompanyData['8. currency'];
   const [orderType, setOrderType] = useState('market')
+  const date = new Date();
+  const [buy,setBuy] = useState(true)
 
   const [quantity, setQuantity] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = {
-      'user' : {
-      'quantity': quantity,
-      'price': Number(Price),
-      }
-    }
-    fetch('http://127.0.0.1:5000/', {
-    method: 'POST',
-    headers: {
+    const currentTime = date.toJSON()
+    if(buy){
+      fetch('https://prachi003.pythonanywhere.com/buy', {
+      method: 'POST',
+      headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({})
-  }).then(res => res.json()).then(res => console.log(res))
+    body: JSON.stringify({user_id: Number(sessionStorage.getItem("user_id")),stock_id: CompanySymbol,entry_price: Number(Price),quantity: Number(quantity),time:currentTime })
+    }).then(res => res.json()).then(res => console.log(res))
+    } else {
+      fetch('https://prachi003.pythonanywhere.com/sell', {
+      method: 'POST',
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({user_id: sessionStorage.getItem("user_id"),stock_id: CompanySymbol,exit_price: Price,quantity: quantity,time:currentTime })
+    }).then(res => res.json()).then(res => console.log(res))
+    }
     setTrigger(false);
   }
   
@@ -40,13 +49,13 @@ const Form = ({trigger, setTrigger, data}) => {
           <button className='form-popup-close-btn' onClick={() => {setTrigger(false)}}><img src={close} /></button>
         </div>
         <div className='form-popup-company-details'>
-          <div className='company-name-form'>{CompanyName}</div>
-          <div>{Price}{Currency}</div>
+          <div className='company-name-form'>{CompanySymbol}</div>
+          <div>{Price}</div>
           <div>{ChangePercentage}</div>
         </div>
         <div className='form-popup-buysell-container'>
-            <div className='form-popup-buysell-btn buy-btn'>buy</div>
-            <div className='form-popup-buysell-btn sell-btn'>sell</div>
+            <div className='form-popup-buysell-btn buy-btn' onClick={() => {setBuy(true)}}>buy</div>
+            <div className='form-popup-buysell-btn sell-btn' onClick={() => {setBuy(false)}}>sell</div>
         </div>
         <div className='form-popup-checkbox-order'>
           <div className='market-order'>

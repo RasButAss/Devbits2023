@@ -20,18 +20,16 @@ const Search = ({ setWatchlistData }) => {
   }
 
   function handleOnclick(event) {
-    // const companyData = JSON.parse(event.target.dataset.value)
-    // console.log(event);
-    // console.log(companyData); 
-    fetch('https://prachi003.pythonanywhere.com/buy', {
+    const companySymbol = event.target.dataset.value
+    fetch('https://prachi003.pythonanywhere.com/add_to_watchlist', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({user_id: 1,stock_id: 1,entry_price: 123,quantity: 12,time:'123' })
-  }).then(res => res.json()).then(res => console.log(res))
-    // getQuoteData(companyData['1. symbol']).then((data) => {'Global Quote' in data ? setWatchlistData((prevData) => {return [...prevData,{...data, ...{'Company Data': companyData}}]}) : console.log(data)})
+    body: JSON.stringify({user_id: sessionStorage.getItem("user_id"), stock_id: String(companySymbol)})
+    }).then(res => res.json()).then(res => console.log(res))
+    getQuoteData(companySymbol).then((data) => {'Global Quote' in data ? setWatchlistData((prevData) => {return [...prevData,data]}) : console.log(data)})
     setSearchResults([]);
   }
   function handleSearchSubmit(e) {
@@ -55,7 +53,7 @@ const Search = ({ setWatchlistData }) => {
       </form>
       <div className='search-dropdown-div'>
         {searchResults.map((element, index) => {
-          return (<div className='search-dropdown-row' key={index} onClick={handleOnclick} data-value={JSON.stringify(element)} >{element['2. name']}  {element['1. symbol']}</div>)
+          return (<div className='search-dropdown-row' key={index} onClick={handleOnclick} data-value={element['1. symbol']} >{element['2. name']}  {element['1. symbol']}</div>)
         })}
       </div>
     </div>

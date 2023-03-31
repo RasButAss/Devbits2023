@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './statusnav.css'
 
 const StatusNav = ({setPage, page}) => {
@@ -6,16 +6,25 @@ const StatusNav = ({setPage, page}) => {
     backgroundColor: 'white',
     color: 'black',
   }
+  const [userInfo, setUserInfo] = useState({})
+  useEffect(() => {
+    fetch('https://prachi003.pythonanywhere.com/get_user_info?' + new URLSearchParams({
+      user_id: sessionStorage.getItem("user_id")
+    })).then(res => res.json()).then(res => setUserInfo(res))
+  },[])
+  useEffect(() => {
+    console.log(userInfo.info)
+  },[userInfo])
   return (
     <div className='statusnav-main-div'>
       <div className="statusnav-links">
-        <button style={page === 'active' ? activatedButton : null} onClick={() => setPage('active')}>Active Positions</button>
-        <button style={page === 'pending' ? activatedButton : null} onClick={() => setPage('pending')}>Pending Orders</button>
-        <button style={page === 'history' ? activatedButton : null} onClick={() => setPage('history')}>Day's History</button>
+        <button style={page === 'active' ? activatedButton : null} onClick={() => setPage('active')}>Buy</button>
+        <button style={page === 'pending' ? activatedButton : null} onClick={() => setPage('pending')}>Sell</button>
+        <button style={page === 'history' ? activatedButton : null} onClick={() => setPage('history')}>History</button>
       </div>
       <div className="statusnav-pnl-data">
-        <p>P/L (Today) : 0.00</p>
-        <p>P/L (Active Positions) : 0.00</p>
+        <p>Holdings: {'info' in userInfo ? userInfo.info.holdings:null}</p>
+        <p>Balance : {'info' in userInfo ? userInfo.info.balance:null}</p>
       </div>
     </div>
   )

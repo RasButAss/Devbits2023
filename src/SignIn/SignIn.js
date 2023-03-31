@@ -14,7 +14,7 @@ const SignIn = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({user_name: username, password: password })
-    }).then(res => res.json()).then(res => console.log(res))
+    }).then(res => res.json()).then(res => {sessionStorage.setItem("user_id",res[0][0])})
   }
   return (
     <div className='login-main-div'>
