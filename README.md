@@ -22,6 +22,8 @@ For out future update we plan to add consumer support. With this, users can acce
 <li>@app.route('/get_user_sale',methods={'GET'})  --> GET HISTORY OF ALL THE STOCKS EVER SOLD</li>
 <li>@app.route('/get_user_watchlist',methods={'GET'}) --> GET ALL THE PROFILES IN USER'S WATCHLIST</li>
 </ol>
+
+
 ## DEPLOYMENT OF BACKEND
 http://prachi003.pythonanywhere.com/
 
