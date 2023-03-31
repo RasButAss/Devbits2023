@@ -11,17 +11,17 @@ For out future update we plan to add consumer support. With this, users can acce
 3. MySQL Database
 
 ## BACKEND
-
-1.@app.route('/sign_up_user',methods={'POST'}) -->REGISTER A NEW USER
-2.@app.route('/login',methods={'POST'})   --> LOGIN AN OLD USER
-3.@app.route('/add_to_watchlist',methods={'POST'})  --> ADD A COMPANY PROFILE TO USER'S WATCHLIST
-4.@app.route('/buy',methods={'POST'})  -->BUY A COMPANY'S STOCK
-5.@app.route('/sell',methods={'POST'})  -->SELL A COMPANY'S STOCK
-6.@app.route('/get_user_info',methods={'GET'}) --> GET CURRENT HOLDINGS AND BALANCE OF A USER
-7.@app.route('/get_user_buys',methods={'GET'}) --> GET HISTORY OF ALL THE STOCKS EVER BOUGHT
-8.@app.route('/get_user_sale',methods={'GET'})  --> GET HISTORY OF ALL THE STOCKS EVER SOLD
-9.@app.route('/get_user_watchlist',methods={'GET'}) --> GET ALL THE PROFILES IN USER'S WATCHLIST
-
+<ol>
+ <li>@app.route('/sign_up_user',methods={'POST'}) -->REGISTER A NEW USER</li>
+ <li>@app.route('/login',methods={'POST'})   --> LOGIN AN OLD USER</li>
+<li>@app.route('/add_to_watchlist',methods={'POST'})  --> ADD A COMPANY PROFILE TO USER'S WATCHLIST</li>
+<li>@app.route('/buy',methods={'POST'})  -->BUY A COMPANY'S STOCK</li>
+<li>@app.route('/sell',methods={'POST'})  -->SELL A COMPANY'S STOCK</li>
+<li>@app.route('/get_user_info',methods={'GET'}) --> GET CURRENT HOLDINGS AND BALANCE OF A USER</li>
+<li>@app.route('/get_user_buys',methods={'GET'}) --> GET HISTORY OF ALL THE STOCKS EVER BOUGHT</li>
+<li>@app.route('/get_user_sale',methods={'GET'})  --> GET HISTORY OF ALL THE STOCKS EVER SOLD</li>
+<li>@app.route('/get_user_watchlist',methods={'GET'}) --> GET ALL THE PROFILES IN USER'S WATCHLIST</li>
+</ol>
 ## DEPLOYMENT OF BACKEND
 http://prachi003.pythonanywhere.com/
 
