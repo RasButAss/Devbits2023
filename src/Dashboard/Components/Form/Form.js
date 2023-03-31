@@ -1,5 +1,6 @@
 import React,{ useState } from 'react'
 import './formpopup.css'
+import close from './close.png'
 
 const Form = ({trigger, setTrigger, data}) => {
   const CompanyData = data["Company Data"];
@@ -9,25 +10,25 @@ const Form = ({trigger, setTrigger, data}) => {
   const Price = QuoteData['05. price'];
   const Currency = CompanyData['8. currency'];
   const [orderType, setOrderType] = useState('market')
-  const [limitCheckboxOn, setLimitCheckboxOn] = useState(false);
-  const [stopCheckboxOn, setStopCheckboxOn] = useState(false);
-  const [targetCheckboxOn, setTargetCheckboxOn] = useState(false);
 
   const [quantity, setQuantity] = useState(null);
-  const [limit, setLimit] = useState(null);
-  const [stop, setStop] = useState(null);
-  const [target, setTarget] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
       'user' : {
       'quantity': quantity,
-      'limit': limit,
-      'target': target,
-      'stop': stop,
+      'price': Number(Price),
       }
     }
+    fetch('http://127.0.0.1:5000/', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({})
+  }).then(res => res.json()).then(res => console.log(res))
     setTrigger(false);
   }
   
@@ -36,30 +37,22 @@ const Form = ({trigger, setTrigger, data}) => {
       <div className='form-popup-inner'>
         <form onSubmit={handleSubmit}>
         <div className='form-popup-close-div'>
-          <button className='form-popup-close-btn' onClick={() => {setTrigger(false)}}>close</button>
+          <button className='form-popup-close-btn' onClick={() => {setTrigger(false)}}><img src={close} /></button>
         </div>
         <div className='form-popup-company-details'>
-          <div>{CompanyName}</div>
-          <div>LTP : {Price}{Currency}</div>
+          <div className='company-name-form'>{CompanyName}</div>
+          <div>{Price}{Currency}</div>
+          <div>{ChangePercentage}</div>
         </div>
         <div className='form-popup-buysell-container'>
             <div className='form-popup-buysell-btn buy-btn'>buy</div>
             <div className='form-popup-buysell-btn sell-btn'>sell</div>
         </div>
         <div className='form-popup-checkbox-order'>
+          <div className='market-order'>
           <input type="checkbox" id="market" name="market" value="market" onClick={() => {setOrderType('market')}} />
           <label for="market">Market</label><br />
-          <input type="checkbox" id="limit" name="limit" value="limit" onClick={() => {setOrderType('limit'); setLimitCheckboxOn(!limitCheckboxOn)}}  />
-          <label for="limit">Limit</label><br />
-          {limitCheckboxOn ? <input type="text" id="limit-input" name="limit-input" onChange={(e) => {setLimit(e.target.value)}} value={limit} /> : null}
-        </div>
-        <div className='form-popup-checkbox-target-stop'>
-          <input type="checkbox" id="target" name="target" value="target" onClick={() => {setTargetCheckboxOn(!targetCheckboxOn)}}  />
-          <label for="target">Target</label><br />
-          {targetCheckboxOn ? <input type="text" id="target-input" name="target-input" onChange={(e) => {setTarget(e.target.value)}} value={target} /> : null}
-          <input type="checkbox" id="stop" name="stop" value="stop" onClick={() => {setStopCheckboxOn(!stopCheckboxOn)}} />
-          <label for="stop">StopLoss</label><br />
-          {stopCheckboxOn ? <input type="text" id="stop-input" name="stop-input" onChange={(e) => {setStop(e.target.value)}} value={stop} /> : null}
+          </div>
         </div>
         <div className='form-popup-quantity'>
           <label for='quantity'>Quantity</label>

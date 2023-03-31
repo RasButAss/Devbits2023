@@ -22,7 +22,7 @@
 }
 .watchlist-card-content > div {
   padding: 0 0.5rem;
-  font-size: 1rem;
+  font-size: 0.7rem;
 }
 .watchlist-card-company-name {
   display: flex;
@@ -39,7 +39,7 @@
   padding: 0.3rem 0.5rem;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   height: 2rem;
   margin: 0 0.5rem;

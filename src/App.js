@@ -4,6 +4,8 @@ import Home from './Landing/Home';
 import Dashboard from './Dashboard/Dashboard'
 import News from './News/News'
 import Details from './Details/Details';
+import Login from './SignIn/SignIn';
+import SignUp from './SignUp/SignUp';
 
 const App = createBrowserRouter([
   {
@@ -21,7 +23,15 @@ const App = createBrowserRouter([
   {
     path: "/details/:id",
     element: <Details />
-  }
+  },
+  {
+    path: "/signup",
+    element: <SignUp />
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
 ]);
 
 export default App;

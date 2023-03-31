@@ -44,20 +44,20 @@ const Details = () => {
           <p>{companyOverview['Description']}</p>
         </div>
         <div className='company-quick-overview'>
-          <div>Sector : {companyOverview['Sector']}</div>
-          <div>Industry : {companyOverview['Industry']}</div>
-          <div>Exchange : {companyOverview['Exchange']}</div>
-          <div>Country : {companyOverview['Country']}</div>
+          <div><strong>Sector : </strong>{companyOverview['Sector']}</div>
+          <div><strong>Industry : </strong>{companyOverview['Industry']}</div>
+          <div><strong>Exchange : </strong>{companyOverview['Exchange']}</div>
+          <div><strong>Country : </strong>{companyOverview['Country']}</div>
           <div></div>
         </div>
         <div className='company-key-stats'>
           <h2>Key Stats</h2>
-          <div>Market capitalization : {companyOverview['MarketCapitalization']} {companyOverview['Currency']}</div>
-          <div>Price to Earning Ratio : {companyOverview['PERatio']}</div>
-          <div>Dividends Yield : {companyOverview['DividendYield']}</div>
-          <div>Basic EPS : {companyOverview['EPS']}</div>
-          <div>Dividend Per share : {companyOverview['DividendPerShare']}</div>
-          <div>Return on Assets : {companyOverview['ReturnOnAssetsTTM']}</div>
+          <div><strong>Market capitalization : </strong> {companyOverview['MarketCapitalization']} {companyOverview['Currency']}</div>
+          <div><strong>Price to Earning Ratio : </strong> {companyOverview['PERatio']}</div>
+          <div><strong>Dividends Yield : </strong> {companyOverview['DividendYield']}</div>
+          <div><strong>Basic EPS : </strong> {companyOverview['EPS']}</div>
+          <div><strong>Dividend Per share : </strong> {companyOverview['DividendPerShare']}</div>
+          <div><strong>Return on Assets : </strong> {companyOverview['ReturnOnAssetsTTM']}</div>
         </div>
         <div className='details-graph'>
           <TradingViewWidget

@@ -18,3 +18,74 @@
   color: white;
   border: 1px solid white;
 }
+.form-popup-close-btn {
+  background: none;
+  border: none;
+}
+.form-popup-close-btn > img {
+  filter: brightness(0) invert(1);
+}
+.company-name-form {
+  font-weight: 800;
+  font-size: 2rem;
+}
+.form-popup-company-details {
+  flex-direction: row;
+  margin: 0.5rem 0;
+}
+.form-popup-buysell-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5rem 0;
+}
+.form-popup-buysell-btn {
+  margin: 0;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  justify-content: center;
+}
+.buy-btn {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: green;
+  border: 1px solid green;
+}
+.buy-btn:hover {
+  background: black;
+  color: green;
+}
+.sell-btn {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: red;
+  border: 1px solid red;
+}
+.sell-btn:hover {
+  background: black;
+  color: red;
+}
+.form-popup-checkbox-order {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 1rem 0.5rem;
+  margin: 0.5rem 0;
+}
+.form-popup-checkbox-target-stop {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 1rem 0.5rem;
+  margin: 0.5rem 0;
+}
+.form-popup-checkbox-order > div {
+  margin: 0.4rem 0;
+}
+.form-popup-quantity {
+  border: 1px solid rgba(255,255,255,0.2);
+  margin: 0.5rem 0;
+  padding: 1rem 0.5rem;
+  border-radius: 10px;
+}

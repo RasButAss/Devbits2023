@@ -11,6 +11,7 @@
 .card-container-details {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 .company-details-heading > h1 {
   font-size: 5rem;
@@ -18,4 +19,7 @@
 .details-graph {
   display: flex;
   padding: 0;
+}
+.company-key-stats {
+  margin-bottom: 2rem;
 }

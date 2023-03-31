@@ -21,7 +21,7 @@ const Navbar = () => {
           </div>
 
           <div class="nav-links">
-            <Link>Reports</Link>
+            {/* <Link>Reports</Link> */}
             <Link to={'/news'}>News</Link>
             <a href="">Support</a>
             <a href="">Signup</a> 
