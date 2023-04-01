@@ -4,28 +4,23 @@ import './table.css'
 const Table = ({page}) => {
   const [data, setData] = useState([])
   useEffect(() => {
-    if(page === 'active') {
+    if(page === 'buy') {
       fetch('https://prachi003.pythonanywhere.com/get_user_buys?' + new URLSearchParams({
         user_id: Number(sessionStorage.getItem("user_id"))
       })).then(res => res.json()).then(res => setData(res))
-    } else if (page === 'pending') {
+    } else if (page === 'sell') {
       fetch('https://prachi003.pythonanywhere.com/get_user_sale?' + new URLSearchParams({
         user_id: Number(sessionStorage.getItem("user_id"))
       })).then(res => res.json()).then(res => setData(res))
     } else if (page === 'history') {
-      fetch('https://prachi003.pythonanywhere.com/get_user_sale?' + new URLSearchParams({
-        user_id: sessionStorage.getItem("user_id")
-      })).then(res => res.json()).then(res => setData(res))
       fetch('https://prachi003.pythonanywhere.com/get_user_buys?' + new URLSearchParams({
-        user_id: sessionStorage.getItem("user_id")
-      })).then(res => res.json()).then(res => setData((prevData) => {return [...prevData,res]}))
+        user_id: Number(sessionStorage.getItem("user_id"))
+      })).then(res => res.json()).then(res => setData(res))
     }
   },[])
   
   useEffect(() => {
-    data.map((e) => {
-      console.log(e.entry_price);
-    })
+    console.log(data);
   },[data])
   return (
     <div>
@@ -41,8 +36,8 @@ const Table = ({page}) => {
         {data.map((e) => {
           return (
           <div class='dashboard-table-row'>
-            <div>{e['time']}</div>
-            <div>{e['stock_id']}</div>
+            <div>{e.time}</div>
+            <div>{e.stock_id}</div>
             <div>{page}</div>
             <div>{e.quantity}</div>
             <div>{e.entry_price}</div>

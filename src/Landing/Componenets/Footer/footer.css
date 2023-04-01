@@ -1,0 +1,19 @@
+footer {
+  padding: 20px;
+  color: white;
+  background: black;
+}
+
+footer li {
+  float: left;
+  padding: 0 10px;
+  list-style: none;
+}
+
+footer a {
+  color: white;
+}
+
+footer p {
+  float: right;
+}

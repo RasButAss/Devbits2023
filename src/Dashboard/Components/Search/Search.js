@@ -2,22 +2,14 @@ import React, { useState, useEffect } from 'react'
 import './search.css'
 import search from './search.svg'
 
-const Search = ({ setWatchlistData }) => {
+const Search = () => {
 
   const [value, setValue] = useState("");
   const [searchResults, setSearchResults] = useState([])
   const handleChange = (e) => {
     setValue(e.target.value);
   }
-  async function getQuoteData(companySymbol) {
-    try {
-      const data = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${companySymbol}&apikey=8MLLEHJ2IYQ8P50O`)
-      return await data.json()
-    } catch (err) {
-      console.log("No quote data");
-      return err;
-    }
-  }
+
 
   function handleOnclick(event) {
     const companySymbol = event.target.dataset.value
@@ -28,8 +20,7 @@ const Search = ({ setWatchlistData }) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({user_id: sessionStorage.getItem("user_id"), stock_id: String(companySymbol)})
-    }).then(res => res.json()).then(res => console.log(res))
-    getQuoteData(companySymbol).then((data) => {'Global Quote' in data ? setWatchlistData((prevData) => {return [...prevData,data]}) : console.log(data)})
+    }).then(res => res.json()).then(res => console.log(res)).then(() => {window.location.reload()})
     setSearchResults([]);
   }
   function handleSearchSubmit(e) {

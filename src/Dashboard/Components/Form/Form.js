@@ -1,44 +1,76 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect, useRef } from 'react'
 import './formpopup.css'
 import close from './close.png'
 
 const Form = ({trigger, setTrigger, data}) => {
-  // const CompanyData = data["Company Data"];
-  // const CompanyName = CompanyData['2. name'];
-  const QuoteData = data['Global Quote'];
-  const ChangePercentage = QuoteData['10. change percent'];
-  const Price = QuoteData['05. price'];
-  const CompanySymbol = QuoteData['01. symbol']
-  // const Currency = CompanyData['8. currency'];
+  const companySymbol = data.stock_id;
+  const [formData, setFormData] = useState([]);
+  const didFetchQuote = useRef(true)
+  if(trigger) {
+    async function getQuoteData(companySymbol) {
+      try {
+        const data = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${companySymbol}&apikey=8MLLEHJ2IYQ8P50O`)
+        return await data.json()
+      } catch (err) {
+        console.log("No quote data");
+        return err;
+      }
+    }
+    if(didFetchQuote.current) {
+      getQuoteData(companySymbol).then((data) => {'Global Quote' in data ? setFormData(data['Global Quote']) : console.log(data)})
+      didFetchQuote.current = false;
+    }
+  }
+  const[price, setPrice] = useState(null);
+  const[changePercentage, setChangePercentage] = useState(null);
+
+  useEffect(() => {
+    if(formData) {
+      setPrice(formData['05. price']);
+      setChangePercentage(formData['10. change percent']);
+    }
+    console.log(formData);
+  },[formData])
   const [orderType, setOrderType] = useState('market')
   const date = new Date();
   const [buy,setBuy] = useState(true)
 
-  const [quantity, setQuantity] = useState(null);
+  const [quantity, setQuantity] = useState(0);
+  const [error, setError] = useState(false);
+  const [userInfo, setUserInfo] = useState({})
+  useEffect(() => {
+    fetch('https://prachi003.pythonanywhere.com/get_user_info?' + new URLSearchParams({
+      user_id: sessionStorage.getItem("user_id")
+    })).then(res => res.json()).then(res => setUserInfo(res))
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const currentTime = date.toJSON()
-    if(buy){
-      fetch('https://prachi003.pythonanywhere.com/buy', {
-      method: 'POST',
-      headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({user_id: Number(sessionStorage.getItem("user_id")),stock_id: CompanySymbol,entry_price: Number(Price),quantity: Number(quantity),time:currentTime })
-    }).then(res => res.json()).then(res => console.log(res))
+    if((Number(quantity)*Number(price)) <= userInfo.info.balance) {
+      const currentTime = date.toJSON()
+      if(buy){
+        fetch('https://prachi003.pythonanywhere.com/buy', {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({user_id: Number(sessionStorage.getItem("user_id")),stock_id: companySymbol,entry_price: Number(price),quantity: Number(quantity),time:currentTime })
+      }).then(res => res.json()).then(res => console.log(res)).then(() => {window.location.reload()});
+      } else {
+        fetch('https://prachi003.pythonanywhere.com/sell', {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({user_id: sessionStorage.getItem("user_id"),stock_id: companySymbol,exit_price: price,quantity: quantity,time:currentTime })
+      }).then(res => res.json()).then(res => console.log(res)).then(() => {window.location.reload()})
+      }
+      setTrigger(false);
     } else {
-      fetch('https://prachi003.pythonanywhere.com/sell', {
-      method: 'POST',
-      headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({user_id: sessionStorage.getItem("user_id"),stock_id: CompanySymbol,exit_price: Price,quantity: quantity,time:currentTime })
-    }).then(res => res.json()).then(res => console.log(res))
+      setError(true);
     }
-    setTrigger(false);
   }
   
   return (trigger) ? (
@@ -49,9 +81,9 @@ const Form = ({trigger, setTrigger, data}) => {
           <button className='form-popup-close-btn' onClick={() => {setTrigger(false)}}><img src={close} /></button>
         </div>
         <div className='form-popup-company-details'>
-          <div className='company-name-form'>{CompanySymbol}</div>
-          <div>{Price}</div>
-          <div>{ChangePercentage}</div>
+          <div className='company-name-form'>{companySymbol}</div>
+          <div>{price}</div>
+          <div>{changePercentage}</div>
         </div>
         <div className='form-popup-buysell-container'>
             <div className='form-popup-buysell-btn buy-btn' onClick={() => {setBuy(true)}}>buy</div>
@@ -69,6 +101,7 @@ const Form = ({trigger, setTrigger, data}) => {
         </div>
           <button className='form-popup-confirm-btn confirm-btn' type='submit'>confirm</button>
         </form>
+        {error ? <p>Hey hey hey ... Easy there</p>: null}
       </div>
     </div>
   ) : null;

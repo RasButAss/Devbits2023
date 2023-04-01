@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 const SignIn = () => {
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
+  // const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false));
   function handleSubmit(e) {
     e.preventDefault();
     fetch('https://prachi003.pythonanywhere.com/login', {
@@ -14,7 +15,11 @@ const SignIn = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({user_name: username, password: password })
-    }).then(res => res.json()).then(res => {sessionStorage.setItem("user_id",res[0][0])})
+    }).then(res => res.json()).then(res => {
+      sessionStorage.setItem("user_id",res[0][0])
+      // localStorage.setItem("authenticated", true)
+    })
+    
   }
   return (
     <div className='login-main-div'>
@@ -28,7 +33,7 @@ const SignIn = () => {
           <label className='username-lable' for="password">Password</label>
           <input className='username-input' type="password" placeholder="Password" id="password" value={password} onChange={(e) => {setpassword(e.target.value)}} />
 
-          <Link to='/dashboard'><button className='submit-btn-login' type='submit'>Log In</button></Link>
+          <button className='submit-btn-login' type='submit'>Log In</button>
           <p>New to Weldright ? <Link to='/signup'>Sign Up</Link></p>
         </form>
       </div>

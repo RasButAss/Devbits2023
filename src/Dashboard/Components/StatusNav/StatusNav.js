@@ -18,9 +18,10 @@ const StatusNav = ({setPage, page}) => {
   return (
     <div className='statusnav-main-div'>
       <div className="statusnav-links">
-        <button style={page === 'active' ? activatedButton : null} onClick={() => setPage('active')}>Buy</button>
-        <button style={page === 'pending' ? activatedButton : null} onClick={() => setPage('pending')}>Sell</button>
+        <button style={page === 'buy' ? activatedButton : null} onClick={() => setPage('buy')}>Buy</button>
+        <button style={page === 'sell' ? activatedButton : null} onClick={() => setPage('sell')}>Sell</button>
         <button style={page === 'history' ? activatedButton : null} onClick={() => setPage('history')}>History</button>
+        <button style={page === 'graph' ? activatedButton : null} onClick={() => setPage('graph')}>Graph</button>
       </div>
       <div className="statusnav-pnl-data">
         <p>Holdings: {'info' in userInfo ? userInfo.info.holdings:null}</p>
