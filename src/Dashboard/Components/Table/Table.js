@@ -40,8 +40,8 @@ const Table = ({page}) => {
             <div>{e.stock_id}</div>
             <div>{page}</div>
             <div>{e.quantity}</div>
-            <div>{e.entry_price}</div>
-            <div>{e.entry_price * e.quantity}</div>
+            <div>{page === 'buy' ? e.entry_price : e.exit_price}</div>
+            <div>{page === 'buy' ? e.entry_price * e.quantity : e.exit_price * e.quantity}</div>
           </div>
           )
         })}
