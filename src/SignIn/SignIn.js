@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
 import './signin.css'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 const SignIn = () => {
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
-  // const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false));
+  const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false));
+  const [status , setStatus] = useState(null)
   function handleSubmit(e) {
     e.preventDefault();
     fetch('https://prachi003.pythonanywhere.com/login', {
@@ -16,8 +17,15 @@ const SignIn = () => {
       },
       body: JSON.stringify({user_name: username, password: password })
     }).then(res => res.json()).then(res => {
-      sessionStorage.setItem("user_id",res[0][0])
-      // localStorage.setItem("authenticated", true)
+      if(res.status === 'loggedin') {
+        sessionStorage.setItem("user_id",res.user_id)
+        localStorage.setItem("authenticated", true)
+        setauthenticated(true);
+        setStatus(res.status);
+      } else if (res.status === 'wrong credentials') {
+        setauthenticated(false);
+        setStatus(res.status);
+      }
     })
     
   }
@@ -34,6 +42,8 @@ const SignIn = () => {
           <input className='username-input' type="password" placeholder="Password" id="password" value={password} onChange={(e) => {setpassword(e.target.value)}} />
 
           <button className='submit-btn-login' type='submit'>Log In</button>
+          {status === "wrong credentials" ? <p>Invalid credentials entered!</p>: null}
+          {authenticated ? <Navigate to="/dashboard" replace={true} />: null}
           <p>New to Weldright ? <Link to='/signup'>Sign Up</Link></p>
         </form>
       </div>
