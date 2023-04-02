@@ -64,7 +64,7 @@ const Form = ({trigger, setTrigger, data}) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({user_id: sessionStorage.getItem("user_id"),stock_id: companySymbol,exit_price: price,quantity: quantity,time:currentTime })
+      body: JSON.stringify({user_id: sessionStorage.getItem("user_id"),stock_id: companySymbol,exit_price: Number(price),quantity: Number(quantity),time:currentTime })
       }).then(res => res.json()).then(res => console.log(res)).then(() => {window.location.reload()})
       }
       setTrigger(false);
@@ -86,8 +86,8 @@ const Form = ({trigger, setTrigger, data}) => {
           <div>{changePercentage}</div>
         </div>
         <div className='form-popup-buysell-container'>
-            <div className='form-popup-buysell-btn buy-btn' onClick={() => {setBuy(true)}}>buy</div>
-            <div className='form-popup-buysell-btn sell-btn' onClick={() => {setBuy(false)}}>sell</div>
+            <div className='form-popup-buysell-btn buy-btn' onClick={() => {setBuy(true)}} style={buy ? {backgroundColor: "black", color: "green"}: null}>buy</div>
+            <div className='form-popup-buysell-btn sell-btn' onClick={() => {setBuy(false)}} style={!buy ? {backgroundColor: "black", color: "red"}: null}>sell</div>
         </div>
         <div className='form-popup-checkbox-order'>
           <div className='market-order'>
