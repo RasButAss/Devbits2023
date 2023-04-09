@@ -103,7 +103,7 @@ const Form = ({ trigger, setTrigger, data }) => {
             <label for='quantity'>Quantity</label>
             <input type="text" id="quantity" name="quantity" onChange={(e) => { setQuantity(e.target.value) }} value={quantity} />
           </div>
-          <button className='form-popup-confirm-btn confirm-btn' type='submit'>confirm</button>
+          <button className='form-popup-confirm-btn confirm-btn' type='submit'>CONFIRM</button>
         </form>
         {error ? <p>Hey hey hey ... Easy there</p> : null}
       </div>

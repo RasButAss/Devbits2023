@@ -12,9 +12,6 @@ const StatusNav = ({setPage, page}) => {
       user_id: sessionStorage.getItem("user_id")
     })).then(res => res.json()).then(res => setUserInfo(res))
   },[])
-  useEffect(() => {
-    console.log(userInfo.info)
-  },[userInfo])
   return (
     <div className='statusnav-main-div'>
       <div className="statusnav-links">
